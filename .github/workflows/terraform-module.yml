@@ -1,0 +1,22 @@
+name: Terraform module
+
+on:
+  workflow_dispatch:
+  push:
+  pull_request:
+
+permissions:
+  id-token: write
+  contents: write
+  security-events: write
+  packages: read
+  # only required for workflows in private repositories
+  actions: read
+  # For release note generator and release creation
+  pull-requests: write
+  issues: write
+
+jobs:
+  terraform-module:
+    uses: opella-innersource/gh-wf-reusable-workflows/.github/workflows/terraform-module.yml@v1.14.0
+    secrets: inherit
